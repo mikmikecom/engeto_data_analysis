@@ -1,4 +1,4 @@
--- CREATE TABLE t_Michael_Fink_project_SQL_secondary_final AS
+CREATE TABLE t_Michael_Fink_project_SQL_secondary_final AS
 SELECT
 	e.`year` 
 	,e.country 
