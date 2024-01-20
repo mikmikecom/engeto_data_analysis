@@ -105,7 +105,9 @@ Aby se nám na otázku číslo 4 lépe odpovídalo, tak bychom si mohli data je�
 V posledním kroku určíme podmínku, která nám zobrazí výsledky, ve kterých letech je rozdíl mezi průměrnou mírou potravin a mzdy větší než 10%. Nesmíme zapomenout kromě podmínky na rozdíl hodnot mezi potravinou a mzdou zohlednit i možnost, že v jednom roce může potravina růst a mzda klesat, případně naopak.
 
 Dotaz 5
-?
+
+
+
 
 ## VÝSLEDKY
 
@@ -128,4 +130,9 @@ Pokud chceme získat pro každý rok jednu průměrnou hodnotu výše mzdy, ceny
 Odpovědí na takto sloučená data je, že ani v jednom zkoumaném roce nepřekročil maximální průměrný přírůstek hodnoty potraviny výši 10% a to ani ve vztahu ke mzdě (tedy rozdílu průměrných přírůstků potravin ke mzdě).
 
 Otázka 5
-?
+
+Výše HDP nemá přímý vliv na změnu ve mzdách v aktuálním roce, ani v roce předešlém. Mzdy dlouhodobě rostou nezávisle na vývoji ekonomiky. Dokonce v některých slabších letech rostou rychleji než vývoj HDP.
+
+U potravin je situace hodně podobná, ceny potravin rostou každým rokem dlouhodobě. Paradoxně v některých letech slabšího HDP dokonce naprosto disproporčně. Např. i když HDP v roce 2012 oproti předešlému roku pokleslo, tak cena potravin vzrostla o více než 6%. 
+
+Z makroekonomického hlediska jde tento trend ruku v ruce s politikou centrálních bank a ideového zabarvení současného západního světa. Ceny ani mzdy nerostou s vývojem ekonomiky, ale výrazně rychleji než samotná ekonomika.
