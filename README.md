@@ -116,25 +116,30 @@ Abychom byli schopni přehledně porovnat aktuální rok s rokem předešlým a 
 
 ## VÝSLEDKY
 
-Otázka 1: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+Otázka 1
+Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
 
 Pokles mezd v odvětvích se v průběhu let děje běžně alespoň v jednom ze sledovaných období. Pokles ve dvou letech v průběhu období je patrný u Kulturní, zábavní a rekreační činnosti, Profesní, vědecké a technické činnosti, Ubytování, stravování a pohostinství, Veřejná správa a obrana; povinné sociální zabezpečení a Výroba a rozvod elektřiny, plynu, tepla a klimatiz. vzduchu. Vůbec nejhorší situace je ale v odvětví Těžby a dobývání, kde mzdy klesaly dokonce ve 4 sledovaných letech a to 2009,2013,2014 a 2016.
 
-Otázka 2: Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
+Otázka 2
+Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
 
 Z dat jsme zjistili, že ze mzdy v roce 2006 ve výši 20.754 Kč a ze 32.536 Kč v roce 2018 je možné zakoupit 1.437 litrů mléka a 1.287 kilo chleba, resp. 1.642 a 1.342. 
 
-Otázka 3: Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
+Otázka 3
+Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
 
 Pokud se budeme bavit výhradně o kategorii potravin, jejíž meziroční nárůst je nejnižší a nebudeme uvažovat potraviny u nichž dokonce průměrná míra ceny v letech klesá, tak kategorií s nejnižším průměrným meziročním nárůstem (v úhrnu průměrů průměrných změn v dílčích letech) jsou banány žluté.
 
-Otázka 4: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
+Otázka 4
+Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 
 Pokud chceme získat pro každý rok jednu průměrnou hodnotu výše mzdy, ceny potraviny a HDP, pak musíme nejprve toto množství dat sloučit a následně provést průměr z průměrů těchto hodnot.
 
 Odpovědí na takto sloučená data je, že ani v jednom zkoumaném roce nepřekročil maximální průměrný přírůstek hodnoty potraviny výši 10% a to ani ve vztahu ke mzdě (tedy rozdílu průměrných přírůstků potravin ke mzdě).
 
-Otázka 5: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
+Otázka 5 
+Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
 
 Výše HDP nemá přímý vliv na změnu ve mzdách v aktuálním roce, ani v roce předešlém. Mzdy dlouhodobě rostou nezávisle na vývoji ekonomiky. Dokonce v některých slabších letech rostou rychleji než vývoj HDP.
 
