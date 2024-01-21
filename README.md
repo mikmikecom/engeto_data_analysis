@@ -116,8 +116,7 @@ Abychom byli schopni přehledně porovnat aktuální rok s rokem předešlým a 
 
 ## VÝSLEDKY
 
-### Otázka 1.
-#### Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+### Otázka 1. #### Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
 
 Pokles mezd v odvětvích se v průběhu let děje běžně alespoň v jednom ze sledovaných období. Pokles ve dvou letech v průběhu období je patrný u Kulturní, zábavní a rekreační činnosti, Profesní, vědecké a technické činnosti, Ubytování, stravování a pohostinství, Veřejná správa a obrana; povinné sociální zabezpečení a Výroba a rozvod elektřiny, plynu, tepla a klimatiz. vzduchu. Vůbec nejhorší situace je ale v odvětví Těžby a dobývání, kde mzdy klesaly dokonce ve 4 sledovaných letech a to 2009,2013,2014 a 2016.
 
