@@ -54,7 +54,7 @@ Poslední úskalí, které jsem řešil byl výběr dat pouze pro společné rok
 
 ## POSTUP
 
-Tabulka 1
+### Tabulka 1
 
 V prvním kroku jsem se snažil získat potřebná data separátně přes dílčí SELECT klauzuli. Celkem jsem potřeboval tyto  3 SELECT pro mzdy, potraviny a globální ekonomická data.
 
@@ -66,17 +66,17 @@ V druhém kroku jsem potřeboval použít klauzuli UNION, abych získal jednu v�
 
 Ve třetím kroku jsem ještě potřeboval, aby výsledná data měla průnik ve společných zkoumaných letech a nevstupovaly mi do výsledné tabulky roky, které nejsou pro jednotlivé SELECT shodné. Musel jsem tedy pomocí vnořeného SELECT z doposud získané tabulky přidat klauzule WHERE a INTERSECT, které určily podmínku, aby byly vybrány roky, které jsou průnikem vzniklých SELECT ve sloupci common_year, jež se váže v každé tabulce k danému sloupci, kde se vyskytuje rok/datum v příslušném formátu.
 
-Tabulka 2
+### Tabulka 2
 
 Pro tuto tabulku bylo potřebné sloučení 2 tabulek a to: economies a countries, přes společný klíč, kterým je název země. Důvodem bylo, že jsme potřebovali tímto způsobem zjistit, které země spadají do Evropy, jakožto podmínky zadání. Druhá podmínka nám říká, že takto vzniklá tabulka má být za stejné období jako primární tabulka. Zvolil jsem tedy klauzuli WHERE, kde je specifikované, že mají být zkoumány pouze roky, které se vyskytují současně i v primární tabulce. 
 
-Dotaz 1
+### Dotaz 1
 
 Prvním krokem je vnořený SELECT s okenní fcí LAG a PARTITION BY. Tato kombinace nám zaručí přiřazení každému druhu research_category (konkrétní odvětví mzdy) v závislosti na common_years hodnotu předešlého roku avg_value_before_year. Nyní můžeme od průměrné hodnoty (průměr z průměrů) odečíst průměr předchozího roku, abychom dostali míru změny ratio ve výši mzdy každého odvětví. Pro usnadnění a hlavně přehlednost přiřadíme přes klauzuli CASE každému řádku, resp. odvětví konkrétního roku trend, zda-li roste, klesá, stagnuje nebo se jedná o nultý (počáteční) rok, kterým průzkum začíná. Přidáme ještě omezení, abychom získali data pouze týkající se mezd za použití klauzule WHERE. 
 
 V druhém kroku takto nově vytvořený SELECT proložíme podmínkou WHERE, která nám zajistí zobrazení pouze odvětví, kde je trend klesající. Pro co nejkonkrétnější požadovaný výsledek seřadíme na základě sloupce research_category, abychom lépe viděli, v jakém odvětví mzdy klesají nejčastěji, resp. ve více letech za sledované období.
 
-Dotaz 2
+### Dotaz 2
 
 V první fázi jsem si vytvořil dvě separátní klauzule SELECT. První se týkala mezd a bylo potřeba zprůměrovat data mezd za všechna odvětví v každém sledovaném roce, abychom dostali právě jednu hodnotu mzdy pro daný rok. Pomocí klauzule GROUP BY jsem data seskupil dle předmětu zkoumání a společných let. Současně jsem klauzulí WHERE omezil výběr dat z primární tabulky tak, aby se zobrazila data týkající se pouze mezd a počátečního a koncového sledovaného období.
 
@@ -86,7 +86,7 @@ V druhé fázi jsem použil CTE fci WITH, díky které jsem získal zjednodušen
 
 V posledním kroku bylo potřeba zjistit počet chleba a mléka, který si nakoupíme z průměrné mzdy v daném roce. Zde už jsem pouze přidal 2 sloupce pro počet litrů mléka a kilo chleba za mzdu v daném roce jako podíl průměrné mzdy a ceny mléka.
 
-Dotaz 3
+### Dotaz 3
 
 Prvním krokem je vnořený SELECT s okenní fcí LAG a PARTITION BY. Tato kombinace nám zaručí přiřazení každému druhu research_category (konkrétní druh potraviny) v závislosti na common_years hodnotu předešlého roku avg_value_before_year. Nyní můžeme od průměrné hodnoty (průměr z průměrů) odečíst průměr předchozího roku, abychom dostali míru změny ratio ve výši cen každé potraviny. Dotaz ještě omezíme fcí WHERE pouze pro potraviny.
 
@@ -94,7 +94,7 @@ Abychom však z dat byli schopni vyčíst informace týkající se míry zdražo
 
 V posledním kroku klauzulí WHERE určíme, že požadujeme pouze nejnižší nárůst tak, že hodnota průměrné změny je větší než nula, následně seřadíme pomocí  ORDER BY dle průměrné hodnoty změny a nakonec přes klauzuli LIMIT dostaneme právě 1 požadovanou výslednou hodnotu.
 
-Dotaz 4
+### Dotaz 4
 
 Prvním krokem je vnořený SELECT s okenní fcí LAG a PARTITION BY. Tato kombinace nám zaručí přiřazení každému druhu research_category (konkrétní potravina a odvětví mzdy) v závislosti na common_years hodnotu předešlého roku avg_value_before_year. Nyní můžeme od průměrné hodnoty (průměr z průměrů) odečíst průměr předchozího roku, abychom dostali míru změny ratio ve výši cen každé potraviny, odvětví mezd a HDP.
 
@@ -104,7 +104,7 @@ Aby se nám na otázku číslo 4 lépe odpovídalo, tak bychom si mohli data je�
 
 V posledním kroku určíme podmínku, která nám zobrazí výsledky, ve kterých letech je rozdíl mezi průměrnou mírou potravin a mzdy větší než 10%. Nesmíme zapomenout kromě podmínky na rozdíl hodnot mezi potravinou a mzdou zohlednit i možnost, že v jednom roce může potravina růst a mzda klesat, případně naopak.
 
-Dotaz 5
+### Dotaz 5
 
 Pomocí vnořeného SELECT přes fci CASE se snažíme řádky jednotlivých let vážící se k HDP, mzdám a potravinám přeměnit ve sloupce, abychom data zredukovali a zpřehlednili. Nedílnou součástí takovéhoto řešení je sjednocení mzdových odvětví a druhů potravin do jediné položky, tedy průměrné mzdy daného roku a průměrné ceny potravin daného roku. 
 
@@ -116,30 +116,25 @@ Abychom byli schopni přehledně porovnat aktuální rok s rokem předešlým a 
 
 ## VÝSLEDKY
 
-Otázka 1.
-Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+### Otázka 1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
 
 Pokles mezd v odvětvích se v průběhu let děje běžně alespoň v jednom ze sledovaných období. Pokles ve dvou letech v průběhu období je patrný u Kulturní, zábavní a rekreační činnosti, Profesní, vědecké a technické činnosti, Ubytování, stravování a pohostinství, Veřejná správa a obrana; povinné sociální zabezpečení a Výroba a rozvod elektřiny, plynu, tepla a klimatiz. vzduchu. Vůbec nejhorší situace je ale v odvětví Těžby a dobývání, kde mzdy klesaly dokonce ve 4 sledovaných letech a to 2009,2013,2014 a 2016.
 
-Otázka 2.
-Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
+### Otázka 2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
 
 Z dat jsme zjistili, že ze mzdy v roce 2006 ve výši 20.754 Kč a ze 32.536 Kč v roce 2018 je možné zakoupit 1.437 litrů mléka a 1.287 kilo chleba, resp. 1.642 a 1.342. 
 
-Otázka 3.
-Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
+### Otázka 3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
 
 Pokud se budeme bavit výhradně o kategorii potravin, jejíž meziroční nárůst je nejnižší a nebudeme uvažovat potraviny u nichž dokonce průměrná míra ceny v letech klesá, tak kategorií s nejnižším průměrným meziročním nárůstem (v úhrnu průměrů průměrných změn v dílčích letech) jsou banány žluté.
 
-Otázka 4.
-Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
+### Otázka 4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 
 Pokud chceme získat pro každý rok jednu průměrnou hodnotu výše mzdy, ceny potraviny a HDP, pak musíme nejprve toto množství dat sloučit a následně provést průměr z průměrů těchto hodnot.
 
 Odpovědí na takto sloučená data je, že ani v jednom zkoumaném roce nepřekročil maximální průměrný přírůstek hodnoty potraviny výši 10% a to ani ve vztahu ke mzdě (tedy rozdílu průměrných přírůstků potravin ke mzdě).
 
-Otázka 5.
-Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
+### Otázka 5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
 
 Výše HDP nemá přímý vliv na změnu ve mzdách v aktuálním roce, ani v roce předešlém. Mzdy dlouhodobě rostou nezávisle na vývoji ekonomiky. Dokonce v některých slabších letech rostou rychleji než vývoj HDP.
 
