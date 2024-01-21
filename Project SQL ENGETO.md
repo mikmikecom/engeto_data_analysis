@@ -1,4 +1,4 @@
-# SQL PROJEKT
+# SQL PROJEKT - Michael Fink (mikmikecom)
 ## ZADÁNÍ
 
 Úvod do projektu
