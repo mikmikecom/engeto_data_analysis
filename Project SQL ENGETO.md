@@ -1,6 +1,5 @@
 # SQL PROJEKT
 ## ZADÁNÍ
-Zadání projektu
 
 Úvod do projektu
 
@@ -45,7 +44,12 @@ Dále připravte sadu SQL, které z vámi připravených tabulek získají datov
 
 
 ## ANALÝZA
-Co je v datech
+
+Při tvorbě primární tabulky jsem zprvu řešil, jak napojit informace ze dvou, ne tak úplně souvisejících zdrojů dat. Bylo důležité si představit, co má být tím správným výstupem, aby tabulka dávala smysl a dalo se z ní dále vycházet. Rozhodl jsem se použít klauzuli UNION, abych dostal data o odvětvích mezd a druhů potravin pod sebe na řádky. To mi zajistilo zpřehlednění dat.
+
+Poté jsem si potřeboval definovat 3 kategorie vstupních dat: mzda, potravina a HDP, abych byl schopen dále data porovnávat.
+
+Poslední úskalí, které jsem řešil byl výběr dat pouze pro společné roky. Data o mzdách, cenách potravin a výši HDP měla jinou množinu hodnot sledovaných let. Proto bylo žádoucí použít klauzuli INTERSECT, která vrátila hodnotu jako průnik těchto množin.
 
 
 ## POSTUP
