@@ -30,3 +30,39 @@ FROM 	(
 		) sub4
 WHERE -(sub4.avg_food - sub4.avg_wage) > 10 OR (sub4.avg_food - sub4.avg_wage) > 10
 ;
+
+
+--better option
+WITH 
+ratio AS (
+		SELECT 
+			tmf.common_years 
+			,tmf.research_subject
+			,tmf.research_category			
+			,tmf.avg_value
+			,LAG(tmf.avg_value) OVER (PARTITION BY tmf.research_category ORDER BY tmf.common_years) AS avg_value_before_year
+			,round((tmf.avg_value - LAG(tmf.avg_value) OVER (PARTITION BY tmf.research_category ORDER BY tmf.common_years)) / (LAG(tmf.avg_value) OVER (PARTITION BY tmf.research_category ORDER BY tmf.common_years)) *100, 2) AS ratio		
+		FROM t_michael_fink_project_sql_primary_final tmf
+),
+avg_ratio AS (
+		SELECT
+			common_years 
+			,research_subject
+			,round(avg(ratio), 2) AS avg_ratio
+		FROM ratio
+		GROUP BY research_subject, common_years
+		ORDER BY common_years DESC 
+),
+avg_final AS (
+		SELECT 
+			common_years
+			,max(CASE WHEN research_subject = "potravina" THEN avg_ratio END) AS avg_food
+			,max(CASE WHEN research_subject = "mzda" THEN avg_ratio END) AS avg_wage
+			,max(CASE WHEN research_subject = "HDP" THEN avg_ratio END) AS avg_HDP
+		FROM avg_ratio
+		GROUP BY common_years
+)
+SELECT *
+FROM avg_final
+WHERE -(avg_food - avg_wage) > 10 OR (avg_food - avg_wage) > 10
+;
